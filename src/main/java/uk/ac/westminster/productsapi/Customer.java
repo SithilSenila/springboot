@@ -1,17 +1,17 @@
-package uk.uc.westminster.productsapi;
+package uk.ac.westminster.productsapi;
 
-public class Customers{
+public class Customer{
 
     private Long id;
     private String name;
     private String email;
-    private Addres address;
+    private Address address;
 
-    public Customers(){
+    public Customer(){
 
     }
-    public Customers(Long id. String name, String email, Address address){
-        this.idid = id;
+    public Customer(Long id, String name, String email, Address address){
+        this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
@@ -29,7 +29,7 @@ public class Customers{
         return email;
     }
 
-    public Addres getAddress() {
+    public Address getAddress() {
         return address;
     }
 }

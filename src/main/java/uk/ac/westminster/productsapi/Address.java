@@ -1,6 +1,6 @@
-package uk.ac.westminster.prodcutsapi;
+package uk.ac.westminster.productsapi;
 
-piblic class Address {
+public class Address {
     private String street;
     private String city;
     private String postcode;

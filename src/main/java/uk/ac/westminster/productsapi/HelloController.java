@@ -14,7 +14,7 @@ public class HelloController {
         return "Goodbye from Spring Boot!";
         }
     @GetMapping("/status")
-    public String status(){
+    public String status() {
         return "API is running - Tutorial 1";
     }
 }
