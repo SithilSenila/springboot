@@ -1,5 +1,5 @@
 @startuml
-class Product {
+abstract class Product {
     - id : Long
     - name : String
     - price : double
@@ -11,26 +11,44 @@ class Product {
     + setName(name : String) : void
     + getPrice() : double
     + setPrice(price : double) : void
+    + {abstract} getSummary() : String
+}
+
+interface Discountable {
+    + applyDiscount(rate : double) : void
+    + getDiscountedPrice() : double
 }
 
 class DigitalProduct {
+    - discountedPrice : double
     - downloadUrl : String
     - fileSizeMB : double
     + DigitalProduct(id : Long, name : String, price : double, downloadUrl : String, fileSizeMB : double)
     + getDownloadUrl() : String
     + getFileSize() : double
+    + getSummary() : String
+    + applyDiscount(rate : double) : void
+    + getDiscountedPrice() : double
 }
 
 class PhysicalProduct {
+    - discountedPrice : double
     - weightKg : double
     - dimensions : String
     + PhysicalProduct()
     + PhysicalProduct(id : Long, name : String, price : double, weight : double, dimensions : String)
     + getWeightKg() : double
     + getDimensions() : String
+    + getSummary() : String
+    + applyDiscount(rate : double) : void
+    + getDiscountedPrice() : double
 }
 
-' <|-- is the inheritance (generalisation) arrow. The hollow triangle sits at the PARENT (Product) end.
+' <|-- generalisation (extends): SOLID line, hollow triangle at Product
 Product <|-- DigitalProduct
 Product <|-- PhysicalProduct
+
+' <|.. realisation (implements): DASHED line, hollow triangle at Discountable
+Discountable <|.. DigitalProduct
+Discountable <|.. PhysicalProduct
 @enduml
